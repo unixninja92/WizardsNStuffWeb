@@ -1,7 +1,11 @@
 language: php
 
+addons:
+ ssh_known_hosts:
+  - whirlpool.obscure.systems
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_0ff6502eb394_key -iv $encrypted_0ff6502eb394_iv
+  - openssl aes-256-cbc -K $encrypted_0ff6502eb394_key -iv $encrypted_0ff6502eb394_iv
   -in .travis/whirlpool.rsa.enc -out whirlpool.rsa -d
 
 script: true
