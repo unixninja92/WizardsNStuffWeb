@@ -1,3 +1,13 @@
 language: php
 
+before_install:
+- openssl aes-256-cbc -K $encrypted_0ff6502eb394_key -iv $encrypted_0ff6502eb394_iv
+  -in whirlpool.rsa.enc -out whirlpool.rsa -d
+
 script: true
+
+after_success:
+  - chmod 600 .travis/whirlpool.rsa.enc # this key should have push access
+  - ssh-add .travis/whirlpool.rsa.enc
+  - git remote add deploy gitdeploy@whirlpool.obscure.systems:/usr/share/nginx/www/wizards
+  - git push deploy
