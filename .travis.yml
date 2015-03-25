@@ -9,5 +9,5 @@ script: true
 after_success:
   - chmod 600 .travis/whirlpool.rsa.enc # this key should have push access
   - ssh-add .travis/whirlpool.rsa.enc
-  - git remote add deploy gitdeploy@whirlpool.obscure.systems:/usr/share/nginx/www/wizards
+  - git remote add deploy gitdeploy@whirlpool.obscure.systems:/var/git/wizards
   - git push deploy
