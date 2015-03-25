@@ -9,7 +9,7 @@ before_install:
 script: true
 
 after_success:
-  - chmod 600 whirlpool.rsa # this key should have push access
+  - chmod 600 .travis/whirlpool.rsa # this key should have push access
   - eval `ssh-agent -s`
   - ssh-add .travis/whirlpool.rsa
   - git remote add deploy gitdeploy@whirlpool.obscure.systems:/var/git/wizards
